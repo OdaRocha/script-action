@@ -9,16 +9,23 @@ permissions:
 
 jobs:
   validate-consumers:
+    
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: 16.17.1
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 16.13.x
+          node-version: ${{ matrix.node-version }}
           cache: npm
+          cache-dependency-path:
 
       - name: Install
         run: npm ci
