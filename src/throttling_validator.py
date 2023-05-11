@@ -5,11 +5,9 @@ from consumer import Consumer
 from throttling import Throttling
 
 def validate_duplicate(consumerList):
-    print('antes', consumerList)
     duplicate_list = [item for item, count in collections.Counter(consumerList.access_control).items() if count > 1]
-    print('dps', duplicate_list)
-
     if len(duplicate_list) > 0 :
+        print('duplicados', duplicate_list)
         raise Exception('file contains duplicate api-keys')
 
 
