@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   validate-consumers:
-    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
