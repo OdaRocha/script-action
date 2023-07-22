@@ -12,7 +12,7 @@ body:
     id: txt_api_key_dev
     attributes:
       label: Digite o seu API KEY do ambiente de Desenvolvimento.
-      description: How can we get in touch with you if we need more info?
+      description: O API_KEY deve estar em acordo com o integration tools?
       placeholder: 195e404a-28bd-11ee-be56-0242ac120002
     validations:
       required: true
@@ -32,13 +32,22 @@ body:
       placeholder: 3b05eec8-28bd-11ee-be56-0242ac120002
     validations:
       required: true
-  - type: checkboxes
-    id: chk_method_get
+  - type: input
+    id: txt_sigla_app
     attributes:
-      label: Quais HTTP Methods voce necessita?
-      description: Marque caso precise acessar a consulta na API do EQ3.
+      label: Digite a Sigla App do seu sistema.
+      description: A Sigla App deve ser igual a encontrada no Defect-Dojo
+      placeholder: EQ3-O
+    validations:
+      required: true
+  - type: checkboxes
+    id: chk_methods
+    attributes:
+      label: Quais HTTP Methods voce necessita de liberação?
+      description: Selecione ao menos um HTTP Method.
       options:
       - label: GET
       - label: POST
       - label: PATCH
-        required: true
+    validations:
+      required: true
