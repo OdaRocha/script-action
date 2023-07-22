@@ -1,0 +1,44 @@
+name: Quota Orquestrador 
+description: Definir a quantidade de transações por segundo que sua API_KEY irá acessar o Orquestrador
+title: "[Orquestrador]: <Digite sua Sigla aqui>"
+labels: ["tps", "orquestrador"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha todas informações obrigatórias para solicitar sua liberação no Orquestrador!
+  - type: input
+    id: txt_api_key_dev
+    attributes:
+      label: Digite o seu API KEY do ambiente de Desenvolvimento.
+      description: How can we get in touch with you if we need more info?
+      placeholder: 195e404a-28bd-11ee-be56-0242ac120002
+    validations:
+      required: true
+  - type: input
+    id: txt_api_key_hom
+    attributes:
+      label: Digite o seu API KEY do ambiente de Homologação.
+      description: How can we get in touch with you if we need more info?
+      placeholder: 36cd4c02-28bd-11ee-be56-0242ac120002
+    validations:
+      required: true
+  - type: input
+    id: txt_api_key_prod
+    attributes:
+      label: Digite o seu API KEY do ambiente de Produção.
+      description: How can we get in touch with you if we need more info?
+      placeholder: 3b05eec8-28bd-11ee-be56-0242ac120002
+    validations:
+      required: true
+  - type: checkboxes
+    id: chk_method_get
+    attributes:
+      label: Quais HTTP Methods voce necessita?
+      description: Marque caso precise acessar a consulta na API do EQ3.
+      options:
+      - label: GET
+      - label: POST
+      - label: PATCH
+        required: true
