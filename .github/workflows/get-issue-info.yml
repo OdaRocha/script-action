@@ -1,4 +1,4 @@
-name: 'Testing Issue Trigger'
+name: 'Get Issue Info'
 
 on:
   issues: 
