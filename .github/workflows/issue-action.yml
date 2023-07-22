@@ -1,0 +1,44 @@
+name: 'Testing Issue Trigger'
+
+on:
+  issues: 
+    types: 
+      - opened
+      - edited
+
+jobs:
+  get-issue-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get Issue Info
+        id: issue-info
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // Use a API do GitHub para obter informações da issue
+            const issueNumber = context.payload.issue.number;
+            const issueTitle = context.payload.issue.title;
+            const issueBody = context.payload.issue.body;
+            const txt_api_key_dev = context.payload.issue.txt_api_key_dev;
+            const txt_api_key_hom = context.payload.issue.txt_api_key_hom;
+            const txt_api_key_prod = context.payload.issue.txt_api_key_prod;
+            const txt_sigla_app = context.payload.issue.txt_sigla_app;
+            const txt_tps_dev = context.payload.issue.txt_tps_dev;
+            const txt_tps_hom = context.payload.issue.txt_tps_hom;
+            const txt_tps_prod = context.payload.issue.txt_tps_prod;
+            
+            // Defina as variáveis de saída para uso posterior
+            console.log(`::set-output name=issueNumber::${issueNumber}`);
+            console.log(`::set-output name=issueTitle::${issueTitle}`);
+            console.log(`::set-output name=issueBody::${issueBody}`);
+            console.log(`::set-output name=issueBody::${txt_api_key_dev}`);
+            console.log(`::set-output name=issueBody::${txt_api_key_hom}`);
+            console.log(`::set-output name=issueBody::${txt_api_key_prod}`);
+            console.log(`::set-output name=issueBody::${txt_sigla_app}`);
+            console.log(`::set-output name=issueBody::${txt_tps_dev}`);
+            console.log(`::set-output name=issueBody::${txt_tps_hom}`);
+            console.log(`::set-output name=issueBody::${txt_tps_prod}`);
