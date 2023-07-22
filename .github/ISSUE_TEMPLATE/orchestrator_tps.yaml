@@ -62,7 +62,7 @@ body:
     attributes:
       label: Digite a volumetria de acesso ao ambiente de Desenvolviemnto.
       description: A volumetria deve ser informada em requisições por segundo
-      placeholder: 3
+      placeholder: "3"
     validations:
       required: true    
     
@@ -71,7 +71,7 @@ body:
     attributes:
       label: Digite a volumetria de acesso ao ambiente de Homologação.
       description: A volumetria deve ser informada em requisições por segundo
-      placeholder: 5
+      placeholder: "5"
     validations:
       required: true   
 
@@ -80,6 +80,6 @@ body:
     attributes:
       label: Digite a volumetria de acesso ao ambiente de Produção.
       description: A volumetria deve ser informada em requisições por segundo
-      placeholder: 10
+      placeholder: "10"
     validations:
       required: true        
