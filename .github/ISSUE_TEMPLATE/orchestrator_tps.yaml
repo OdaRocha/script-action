@@ -8,6 +8,7 @@ body:
     attributes:
       value: |
         Preencha todas informações obrigatórias para solicitar sua liberação no Orquestrador!
+  
   - type: input
     id: txt_api_key_dev
     attributes:
@@ -16,6 +17,7 @@ body:
       placeholder: 195e404a-28bd-11ee-be56-0242ac120002
     validations:
       required: true
+  
   - type: input
     id: txt_api_key_hom
     attributes:
@@ -24,6 +26,7 @@ body:
       placeholder: 36cd4c02-28bd-11ee-be56-0242ac120002
     validations:
       required: true
+  
   - type: input
     id: txt_api_key_prod
     attributes:
@@ -32,6 +35,7 @@ body:
       placeholder: 3b05eec8-28bd-11ee-be56-0242ac120002
     validations:
       required: true
+  
   - type: input
     id: txt_sigla_app
     attributes:
@@ -40,6 +44,7 @@ body:
       placeholder: EQ3-O
     validations:
       required: true
+  
   - type: checkboxes
     id: chk_methods
     attributes:
@@ -51,3 +56,30 @@ body:
       - label: PATCH
     validations:
       required: true
+
+  - type: input
+    id: txt_tps_dev
+    attributes:
+      label: Digite a volumetria de acesso ao ambiente de Desenvolviemnto.
+      description: A volumetria deve ser informada em requisições por segundo
+      placeholder: 3
+    validations:
+      required: true    
+    
+  - type: input
+    id: txt_tps_hom
+    attributes:
+      label: Digite a volumetria de acesso ao ambiente de Homologação.
+      description: A volumetria deve ser informada em requisições por segundo
+      placeholder: 5
+    validations:
+      required: true   
+
+  - type: input
+    id: txt_tps_prod
+    attributes:
+      label: Digite a volumetria de acesso ao ambiente de Produção.
+      description: A volumetria deve ser informada em requisições por segundo
+      placeholder: 10
+    validations:
+      required: true        
