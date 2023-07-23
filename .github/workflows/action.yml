@@ -31,7 +31,7 @@ jobs:
             const issueBody = data.body;
 
             // Imprima as informações da issue
-            console.log('Issue Data:', data);
+            console.log('Payload Body:', github.context.payload.comment.body);
             console.log('Issue Title:', issueTitle);
             console.log('Issue Body:', issueBody);
 
@@ -44,5 +44,3 @@ jobs:
         run: |
           echo "Título da issue: ${{ steps.get-issue-info.outputs.issueTitle }}"
           echo "Corpo da issue: ${{ steps.get-issue-info.outputs.issueBody }}"
-        
-          
