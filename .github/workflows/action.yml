@@ -18,21 +18,20 @@ jobs:
         uses: actions/github-script@v4
         with:
           script: |
+            // Use a API do GitHub para obter informações da issue
             const { data } = await github.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number
-              issueTitle: context.issue.txt_api_key_dev
-              txt_api_key_dev: context.issue.txt_api_key_dev
             });
-          
-            
+
+            // Exemplo de captura de informações da issue
+            const issueTitle = data.title;
+            const issueBody = data.body;
+
             // Defina as variáveis de saída para uso posterior
-            console.log(`owner=${data.issueTitle}`);
-            console.log(`repo=${data.issueTitle}`);
-            console.log(`issue_number=${data.issue_number}`);
-            console.log(`issueTitle=${data.issueTitle}`);
-            console.log(`txt_api_key_dev=${data.txt_api_key_dev}`);
+            echo "::set-output name=issueTitle::${issueTitle}"
+            echo "::set-output name=issueBody::${issueBody}"
         
       - name: Use Issue Info
         id: issue-use
