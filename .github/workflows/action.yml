@@ -30,7 +30,9 @@ jobs:
             const issueTitle = data.title;
             const issueBody = data.body;
             
-            const joinBody = issueBody.join('');
+            console.log(typeof issueBody);
+            const palavras = issueBody.split(' ');
+            const joinBody = palavras.join('');
 
             // Defina as variáveis de saída para uso posterior
             console.log(`::set-output name=issueTitle::${issueTitle}`);
@@ -40,4 +42,4 @@ jobs:
         id: issue-use
         run: |
           echo "Título da issue: ${{ steps.get-issue-info.outputs.issueTitle }}"
-          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.issueBody }}"
+          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.joinBody }}"
