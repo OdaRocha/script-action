@@ -34,9 +34,9 @@ jobs:
             const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
             // Defina as variáveis de saída para uso posterior
-            echo "name=issueTitle::${issueTitle}" >> $GITHUB_OUTPUT
-            echo "name=joinBody::${joinBody}" >> $GITHUB_OUTPUT
-        
+            console.log(`name=issueTitle::${issueTitle}`); >> $GITHUB_OUTPUT
+            console.log(`name=joinBody::${joinBody}`); >> $GITHUB_OUTPUT
+           
       - name: Use Issue Info
         id: issue-use
         run: |
