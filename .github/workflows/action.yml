@@ -31,8 +31,7 @@ jobs:
             const issueBody = data.body;
             
             console.log(typeof issueBody);
-            const palavras = issueBody.split(' ');
-            const joinBody = palavras.join('');
+            const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
             // Defina as variáveis de saída para uso posterior
             console.log(`::set-output name=issueTitle::${issueTitle}`);
