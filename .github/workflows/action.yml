@@ -32,6 +32,7 @@ jobs:
 
             // Imprima as informações da issue
             console.log('Payload Body:', github.context.payload.comment.body);
+            console.log('Payload:', github.context.payload);
             console.log('Issue Title:', issueTitle);
             console.log('Issue Body:', issueBody);
 
