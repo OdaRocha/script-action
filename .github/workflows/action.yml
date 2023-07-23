@@ -34,8 +34,8 @@ jobs:
             const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
             // Defina as variáveis de saída para uso posterior
-            core.setOutput('issueTitle', 'issueTitle');
-            core.setOutput('joinBody', 'joinBody');
+            core.setOutput('outputKey', '${issueTitle}');
+            core.setOutput('joinBody', '${joinBody}');
             
         
       - name: Use Issue Info
