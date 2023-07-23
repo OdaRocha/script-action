@@ -14,31 +14,30 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Get Issue Info
-        id: issue-info
+        id: get-issue-info
         uses: actions/github-script@v4
         with:
-          # github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            // Use a API do GitHub para obter informações da issue
-            const issueNumber = context.payload.issue.number;
-            const issueTitle = context.payload.issue.title;
-            const issueBody = context.payload.issue.body;
-            const txt_api_key_dev = context.payload.issue.txt_api_key_dev;
-            const txt_api_key_hom = context.payload.issue.txt_api_key_hom;
-            const txt_api_key_prod = context.payload.issue.txt_api_key_prod;
-            const txt_sigla_app = context.payload.issue.txt_sigla_app;
-            const txt_tps_dev = context.payload.issue.txt_tps_dev;
-            const txt_tps_hom = context.payload.issue.txt_tps_hom;
-            const txt_tps_prod = context.payload.issue.txt_tps_prod;
+            const { data } = await github.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+              issueTitle: context.issue.txt_api_key_dev
+              txt_api_key_dev: context.issue.txt_api_key_dev
+            });
+          
             
             // Defina as variáveis de saída para uso posterior
-            console.log(`::set-output name=issueNumber::${issueNumber}`);
-            console.log(`::set-output name=issueTitle::${issueTitle}`);
-            console.log(`::set-output name=issueBody::${issueBody}`);
-            console.log(`::set-output name=issueBody::${txt_api_key_dev}`);
-            console.log(`::set-output name=issueBody::${txt_api_key_hom}`);
-            console.log(`::set-output name=issueBody::${txt_api_key_prod}`);
-            console.log(`::set-output name=issueBody::${txt_sigla_app}`);
-            console.log(`::set-output name=issueBody::${txt_tps_dev}`);
-            console.log(`::set-output name=issueBody::${txt_tps_hom}`);
-            console.log(`::set-output name=issueBody::${txt_tps_prod}`);
+            console.log(`owner=${data.issueTitle}`);
+            console.log(`repo=${data.issueTitle}`);
+            console.log(`issue_number=${data.issue_number}`);
+            console.log(`issueTitle=${data.issueTitle}`);
+            console.log(`txt_api_key_dev=${data.txt_api_key_dev}`);
+        
+      - name: Use Issue Info
+        id: issue-use
+        run: |
+          echo "Título da issue: ${{ steps.get-issue-info.outputs.issueTitle }}"
+          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.issueBody }}"
+        
+          
