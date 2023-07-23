@@ -17,6 +17,7 @@ jobs:
         id: get-issue-info
         uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             // Use a API do GitHub para obter informações da issue
             const { data } = await github.issues.get({
@@ -29,9 +30,13 @@ jobs:
             const issueTitle = data.title;
             const issueBody = data.body;
 
+            // Imprima as informações da issue
+            console.log('Issue Title:', issueTitle);
+            console.log('Issue Body:', issueBody);
+
             // Defina as variáveis de saída para uso posterior
-            echo "::set-output name=issueTitle::${issueTitle}"
-            echo "::set-output name=issueBody::${issueBody}"
+            console.log(`::set-output name=issueTitle::${issueTitle}`);
+            console.log(`::set-output name=issueBody::${issueBody}`);
         
       - name: Use Issue Info
         id: issue-use
