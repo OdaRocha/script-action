@@ -29,15 +29,12 @@ jobs:
             // Exemplo de captura de informações da issue
             const issueTitle = data.title;
             const issueBody = data.body;
-
-            // Imprima as informações da issue
-            console.log('Context:', github.context);
-            console.log('Issue Title:', issueTitle);
-            console.log('Issue Body:', issueBody);
+            
+            const joinBody = issueBody.join('');
 
             // Defina as variáveis de saída para uso posterior
             console.log(`::set-output name=issueTitle::${issueTitle}`);
-            console.log(`::set-output name=issueBody::${issueBody}`);
+            console.log(`::set-output name=issueBody::${joinBody}`);
         
       - name: Use Issue Info
         id: issue-use
