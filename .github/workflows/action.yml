@@ -35,7 +35,7 @@ jobs:
 
             // Defina as variáveis de saída para uso posterior
             console.log(`::set-output name=issueTitle::${issueTitle}`);
-            console.log(`::set-output name=issueBody::${joinBody}`);
+            console.log(`::set-output name=joinBody::${joinBody}`);
         
       - name: Use Issue Info
         id: issue-use
