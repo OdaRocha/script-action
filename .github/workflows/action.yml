@@ -36,10 +36,12 @@ jobs:
             // Defina as variáveis de saída para uso posterior
             core.setOutput('issueTitle', issueTitle);
             core.setOutput('joinBody', joinBody);
+            core.setOutput('issueBody', issueBody);
             
         
       - name: Use Issue Info
         id: issue-use
         run: |
           echo "Título da issue: ${{ steps.get-issue-info.outputs.issueTitle }}"
-          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.joinBody }}"
+          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.issueBody }}"
+          echo "Corpo da issue reduzido: ${{ steps.get-issue-info.outputs.joinBody }}"
