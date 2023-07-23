@@ -33,9 +33,10 @@ jobs:
             console.log(typeof issueBody);
             const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
-            core.setOutput('joinBody', 'joinBody');
-            core.setOutput('issueTitle', 'issueTitle');
-            core.setOutput('issueBody', 'issueBody');
+            // Defina as variáveis de saída para uso posterior
+            console.log(`::set-output name=issueTitle::${issueTitle}`);
+            console.log(`::set-output name=issueBody::${issueBody}`);
+            console.log(`::set-output name=joinBody::${joinBody}`);
            
       - name: Use Issue Info
         id: issue-use
