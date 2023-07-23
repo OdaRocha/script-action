@@ -35,7 +35,7 @@ jobs:
 
             // Defina as variáveis de saída para uso posterior
             core.setOutput('issueTitle', issueTitle);
-            core.setOutput('joinBody', ${joinBody});
+            core.setOutput('joinBody', joinBody);
             
         
       - name: Use Issue Info
