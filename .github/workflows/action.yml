@@ -19,6 +19,8 @@ jobs:
         with:
           script: |
             // Use a API do GitHub para obter informações da issue
+            const core = require('@actions/core');
+
             const { data } = await github.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -32,12 +34,13 @@ jobs:
             console.log(typeof issueBody);
             const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
-            data.joinBody = joinBody;
-
-            return data;
+            core.setOutput('joinBody', 'joinBody');
+            core.setOutput('issueTitle', 'issueTitle');
+            core.setOutput('issueBody', 'issueBody');
            
       - name: Use Issue Info
         id: issue-use
         run: |
           echo "Título da issue: ${{ steps.get-issue-info.outputs.issueTitle }}"
-          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.joinBody }}"
+          echo "Corpo da issue: ${{ steps.get-issue-info.outputs.issueBody }}"
+          echo "Corpo reduzido: ${{ steps.get-issue-info.outputs.joinBody }}"
