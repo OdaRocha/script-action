@@ -19,8 +19,7 @@ jobs:
         with:
           script: |
             // Use a API do GitHub para obter informações da issue
-            const core = require('@actions/core');
-
+            
             const { data } = await github.issues.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
