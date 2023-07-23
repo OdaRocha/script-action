@@ -15,9 +15,8 @@ jobs:
 
       - name: Get Issue Info
         id: get-issue-info
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             // Use a API do GitHub para obter informações da issue
             const { data } = await github.issues.get({
@@ -33,9 +32,9 @@ jobs:
             console.log(typeof issueBody);
             const joinBody = issueBody.replace(/[\r\n]+/g, '');
 
-            // Defina as variáveis de saída para uso posterior
-            console.log(`name=issueTitle::${issueTitle}`); >> $GITHUB_OUTPUT
-            console.log(`name=joinBody::${joinBody}`); >> $GITHUB_OUTPUT
+            data.joinBody = joinBody;
+
+            return data;
            
       - name: Use Issue Info
         id: issue-use
